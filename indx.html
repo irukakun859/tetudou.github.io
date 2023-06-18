@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>アプリケーション</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .app-container {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .show-app {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .show-app:hover {
+            background-color: #45a049;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        .result-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function showApp(appId) {
+            var appContainer = document.getElementById(appId);
+            
+            if (appContainer.style.display === "none") {
+                appContainer.style.display = "block";
+            } else {
+                appContainer.style.display = "none";
+            }
+        }
+
+        function calculate() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            
+            var result = num1 + num2; // ここで計算を実行します。他の演算子を使って計算方法を変更できます。
+            
+            document.getElementById("result").innerHTML = "結果: " + result;
+        }
+
+        function showName() {
+            var name = document.getElementById("name").value;
+            
+            if (name === "") {
+                alert("名前を入力してください");
+                return;
+            }
+            
+            document.getElementById("name-result").innerHTML = "こんにちは、" + name + "さん！";
+        }
+    </script>
+</head>
+<body>
+    <h1>アプリケーション</h1>
+    
+    <button class="show-app" onclick="showApp('name-app')">名前表示アプリを表示</button>
+    <button class="show-app" onclick="showApp('calculator-app')">計算サイトを表示</button>
+    
+    <div id="name-app" class="app-container">
+        <label for="name" class="input-label">名前:</label>
+        <input type="text" id="name" class="input-field">
+        
+        <button onclick="showName()" class="submit-button">表示</button>
+        
+        <p id="name-result" class="result-text"></p>
+    </div>
+    
+    <div id="calculator-app" class="app-container">
+        <label for="num1" class="input-label">数値1:</label>
+        <input type="text" id="num1" class="input-field">
+        
+        <label for="num2" class="input-label">数値2:</label>
+        <input type="text" id="num2" class="input-field">
+        
+        <button onclick="calculate()" class="submit-button">計算</button>
+        
+        <p id="result" class="result-text"></p>
+    </div>
+</body>
+</html>
